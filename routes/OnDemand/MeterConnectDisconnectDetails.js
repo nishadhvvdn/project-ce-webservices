@@ -1,0 +1,52 @@
+var express = require('express');
+var router = express.Router();
+var dbCmd = require('../../data/dbCommandsOnDemand.js');
+const schemaValidation = require('../../config/Helpers/payloadValidation')
+const schema = require('../../config/Helpers/MeterBulkOperationSchema')
+
+router.post('/', function (req, res) {
+    try {
+        var MeterID = req.body.MeterID;
+        const data = { MeterID }
+        const getMeterKwhData = schema.getMeterKwH;
+        schemaValidation.validateSchema(data, getMeterKwhData, function (err, result) {
+            if (err) {
+                res.json({
+                    "type": false,
+                    "Message": "Invalid Request, Please try again after some time !!",
+                    "PayloadErrors" : err
+                });
+            }else{
+                MeterID = parseInt(MeterID);
+                if ((MeterID === null)) {
+                    res.json({
+                        "type": false,
+                        "Message": "Invalid Request, Please try again after some time !!"
+                    });
+                } else {
+                    dbCmd.MeterConnDisconnDetails(MeterID, function (err, meterOnDemandDetails) {
+                        if (err) {
+                            res.json({
+                                "type": false,
+                                "Message": err
+                            });
+                        } else {
+                            res.json({
+                                "type": true,
+                                "Message": meterOnDemandDetails
+                            });
+                        }
+                    });
+                }
+            }
+        });
+    } catch (error) {
+        res.json({
+            "type": false,
+            "Message": `Something went wrong : ${error.name} ${error.message}`
+        })
+    }
+
+});
+
+module.exports = router;

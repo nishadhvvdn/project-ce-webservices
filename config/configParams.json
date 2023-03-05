@@ -1,0 +1,9 @@
+{
+    "Passwords": {
+        "ConnectDisconnectPassword": "100200"
+    },
+    "JWTAccessToken": {
+        "SecretKey": "accessqwertyutokensecretasfhjkk",
+        "ExpiryTime": "2592000000" 
+    }
+}

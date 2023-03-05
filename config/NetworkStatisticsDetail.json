@@ -1,0 +1,19 @@
+{
+    "Transformer_3Phase":{
+        "Connected":495,
+        "CommunicationFault":3
+    },
+    "Transformer_1Phase":{
+        "Connected":395,
+        "CommunicationFault":3
+    },
+    "Meter_3Phase":{
+        "Connected":487,
+        "CommunicationFault":3
+    },
+    "Meter_1Phase":{
+        "Connected":447,
+        "CommunicationFault":3
+    },
+    "HeaderCount":12
+}

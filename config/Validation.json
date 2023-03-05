@@ -1,0 +1,1652 @@
+{
+    "CircuitID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9]+$",
+        "Type": "string",
+        "MaxValue": "30",
+        "MinValue": "1",
+        "Values": []
+    },
+    "CircuitNumber": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "CircuitNote": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "KVARating": {
+        "MinLength": 0,
+        "MaxLength": 6,
+        "Required": true,
+        "Pattern": "^((?!(0))[0-9]{1,6})$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "SubstationID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "SubstationName": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "Address": {
+        "MinLength": 0,
+        "MaxLength": 100,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "Country": {
+        "MinLength": 0,
+        "MaxLength": 50,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "State": {
+        "MinLength": 0,
+        "MaxLength": 50,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "City": {
+        "MinLength": 0,
+        "MaxLength": 50,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "ZipCode": {
+        "MinLength": 4,
+        "MaxLength": 6,
+        "Required": true,
+        "Pattern": "^((?!0{5,6})[A-Za-z0-9]{4,6})?$",
+        "Type": "string",
+        "Values": []
+    },
+    "Latitude": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "Longitude": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterID": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterSerialNumber": {
+        "MinLength": 10,
+        "MaxLength": 25,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "SealID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterVersion": {
+        "MinLength": 1,
+        "MaxLength": 7,
+        "Required": true,
+        "Pattern": "^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])([.][0-9]{1,3})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterMake": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "Values": [
+            "Vision",
+            "Tatung"
+        ]
+    },
+    "MeterNominalCurrent": {
+        "MinLength": 0,
+        "MaxLength": 4,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "MeterMaximumCurrent",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterMaximumCurrent": {
+        "MinLength": 0,
+        "MaxLength": 4,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "MeterNominalCurrent",
+        "Values": []
+    },
+    "MeterCTRatio": {
+        "MinLength": 1,
+        "MaxLength": 7,
+        "Required": true,
+        "Pattern": "^([1-9][0-9]{0,2}|1000)([.][0-9]{1,2})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterPTRatio": {
+        "MinLength": 1,
+        "MaxLength": 7,
+        "Required": true,
+        "Pattern": "^([1-9][0-9]{0,2}|1000)([.][0-9]{1,2})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterWiFiMacID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterWiFiIpAddress": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterAdminPassword": {
+        "MinLength": 1,
+        "MaxLength": 20,
+        "Required": true,
+        "Pattern": "^(?![ \t\r\n\f]*$).+",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterConsumerName": {
+        "MinLength": 0,
+        "MaxLength": 50,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterConsumerNumber": {
+        "MinLength": 0,
+        "MaxLength": 20,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterConsumerAddress": {
+        "MinLength": 0,
+        "MaxLength": 100,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterConsumerContactNumber": {
+        "MinLength": 10,
+        "MaxLength": 19,
+        "Required": true,
+        "Pattern": "^[-+]?[0-9]+[-+]?[0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterConsumerCountry": {
+        "MinLength": 0,
+        "MaxLength": 50,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterConsumerState": {
+        "MinLength": 0,
+        "MaxLength": 50,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterConsumerCity": {
+        "MinLength": 0,
+        "MaxLength": 50,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterLatitude": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterLongitude": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterNumberOfPhases": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "1",
+            "3"
+        ]
+    },
+    "MeterApptype": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "Residential",
+            "Commercial",
+            "Industrial",
+            "Electric Vehicles",
+            "Street Light Load"
+        ]
+    },
+    "MeterInstallationLocation": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "In Door",
+            "Out Door"
+        ]
+    },
+    "MeterRatedVoltage": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "110",
+            "220",
+            "240"
+        ]
+    },
+    "MeterRatedFrequency": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "50",
+            "60"
+        ]
+    },
+    "MeterCompliantToStandards": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "IEC",
+            "ANSI"
+        ]
+    },
+    "MeterAccuracy": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "0.5",
+            "1",
+            "2"
+        ]
+    },
+    "MeterDisconnector": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "Yes",
+            "No"
+        ]
+    },
+    "BiDirectional": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "boolean",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            true,
+            false
+        ]
+    },
+    "MeterWiFiPassFlag": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "Y",
+            "N"
+        ]
+    },
+    "EVMeter": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "boolean",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            true,
+            false
+        ]
+    },
+    "SolarPanel": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "boolean",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            true,
+            false
+        ]
+    },
+    "MeterBillingCycleDate": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "number",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+        ]
+    },
+    "MeterDemandResetDate": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "number",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+        ]
+    },
+    "MeterWiFiAccessPointPassword": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterMeterAdminPassword": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterBillingTime": {
+        "MinLength": 1,
+        "MaxLength": 10000,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MeterConsumerZipCode": {
+        "MinLength": 4,
+        "MaxLength": 6,
+        "Required": true,
+        "Pattern": "^((?!0{5,6})[A-Za-z0-9]{4,6})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "ImpulseCountKWh": {
+        "MinLength": 0,
+        "MaxLength": 8,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "ImpulseCountKVARh": {
+        "MinLength": 0,
+        "MaxLength": 8,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "TFMRSerialNumber": {
+        "MinLength": 10,
+        "MaxLength": 25,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "TFMRName": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "TFMRMake": {
+        "MinLength": 0,
+        "MaxLength": 50,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "TFMRRatingCapacity": {
+        "MinLength": 0,
+        "MaxLength": 5,
+        "Required": true,
+        "Pattern": "^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "TFMRHighLineVoltage": {
+        "MinLength": 0,
+        "MaxLength": 6,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "TFMRLowLineVoltage",
+        "Values": []
+    },
+    "TFMRLowLineVoltage": {
+        "MinLength": 0,
+        "MaxLength": 6,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "TFMRHighLineVoltage",
+        "MinValue": "",
+        "Values": []
+    },
+    "TFMRHighLineCurrent": {
+        "MinLength": 0,
+        "MaxLength": 6,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "TFMRLowLineCurrent",
+        "Values": []
+    },
+    "TFMRLowLineCurrent": {
+        "MinLength": 0,
+        "MaxLength": 6,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "TFMRHighLineCurrent",
+        "MinValue": "",
+        "Values": []
+    },
+    "WireSize": {
+        "MinLength": 1,
+        "MaxLength": 6,
+        "Required": true,
+        "Pattern": "^((?!(0))[0-9]{1,6})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "StreetlightUsage": {
+        "MinLength": 0,
+        "MaxLength": 8,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "NoOfConnectedStreetlights": {
+        "MinLength": 0,
+        "MaxLength": 5,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HypersproutSerialNumber": {
+        "MinLength": 10,
+        "MaxLength": 25,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HypersproutMake": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9\\s]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HypersproutVersion": {
+        "MinLength": 1,
+        "MaxLength": 7,
+        "Required": true,
+        "Pattern": "^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])([.][0-9]{1,3})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSCTRatio": {
+        "MinLength": 1,
+        "MaxLength": 7,
+        "Required": true,
+        "Pattern": "^([1-9][0-9]{0,2}|1000)([.][0-9]{1,2})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSPTRatio": {
+        "MinLength": 1,
+        "MaxLength": 7,
+        "Required": true,
+        "Pattern": "^([1-9][0-9]{0,2}|1000)([.][0-9]{1,2})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSCoils": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "object",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSGPRSMacID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSWiFiMacID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSWiFiIpAddress": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSSensorDetails": {
+        "MinLength": 0,
+        "MaxLength": 250,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSLatitude": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSLongitude": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSSimCardNumber": {
+        "MinLength": 10,
+        "MaxLength": 10,
+        "Required": true,
+        "Pattern": "^[0-9]{10}$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "TFMRType": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "Pad Mounted",
+            "Pole Mounted"
+        ]
+    },
+    "HSNumberOfPhases": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "1",
+            "2",
+            "3"
+        ]
+    },
+    "HSRatedVoltage": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "110",
+            "220",
+            "240"
+        ]
+    },
+    "HSRatedFrequency": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "50",
+            "60"
+        ]
+    },
+    "HSAccuracy": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "0.5",
+            "1"
+        ]
+    },
+    "HSCompliantToStandards": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "UL",
+            "CE",
+            "CSA"
+        ]
+    },
+    "HSMaxDemandWindow": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "Sliding",
+            "Fixed"
+        ]
+    },
+    "ConnectedStreetlights": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "boolean",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            true,
+            false
+        ]
+    },
+    "StreetlightsMetered": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "boolean",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            true,
+            false
+        ]
+    },
+    "CameraConnect": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "boolean",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            true,
+            false
+        ]
+    },
+    "HSMaxDemandSlidingWindowInterval": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "15",
+            "30"
+        ]
+    },
+    "HSDemandResetDate": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "number",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+        ]
+    },
+    "MaxOilTemp": {
+        "MinLength": 0,
+        "MaxLength": 9,
+        "Required": true,
+        "Pattern": "^(([-]?(?!(0))[0-9]{1,5}))([.][0-9]{1,2})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "MinOilTemp",
+        "Values": []
+    },
+    "MinOilTemp": {
+        "MinLength": 0,
+        "MaxLength": 9,
+        "Required": true,
+        "Pattern": "^(([-]?(?!(0))[0-9]{1,5}))([.][0-9]{1,2})?$",
+        "Type": "string",
+        "MaxValue": "MaxOilTemp",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSWiFiAccessPointPassword": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HSWifiPassFlag": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "Y",
+            "N"
+        ]
+    },
+    "TransformerID": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HypersproutID": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "MacID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "Owner": {
+        "MinLength": 1,
+        "MaxLength": 15,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9 ]*$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "Description": {
+        "MinLength": 1,
+        "MaxLength": 10000,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "DeviceType": {
+        "MinLength": 1,
+        "MaxLength": 100,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "Type": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "EndpointID": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HubSerialNumber": {
+        "MinLength": 10,
+        "MaxLength": 25,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HubName": {
+        "MinLength": 0,
+        "MaxLength": 25,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9 \t\r\n\f]*$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HardwareVersion": {
+        "MinLength": 1,
+        "MaxLength": 7,
+        "Required": true,
+        "Pattern": "^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])([.][0-9]{1,3})?$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "GprsMacID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "WifiMacID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "WifiIPAddress": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "WifiAccessPointPassword": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "SimCardNumber": {
+        "MinLength": 10,
+        "MaxLength": 10,
+        "Required": true,
+        "Pattern": "^[0-9]{10}$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HHWifiPassFlag": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "Y",
+            "N"
+        ]
+    },
+    "StreetLightStartTime": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24"
+        ]
+    },
+    "StreetLightEndTime": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24"
+        ]
+    },
+    "DeltalinkSerialNumber": {
+        "MinLength": 10,
+        "MaxLength": 25,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "DeltalinkVersion": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "DeltalinkWiFiMacID": {
+        "MinLength": 0,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "^([0-9a-fA-F]{2}[:]){5}([0-9a-fA-F]{2})$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "Bandwidth": {
+        "MinLength": "",
+        "MaxLength": "",
+        "Required": false,
+        "Pattern": "^[0-1]$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [0, 1]
+    },
+    "DownloadBandwidth": {
+        "MinLength": "",
+        "MaxLength": "",
+        "Required": false,
+        "Pattern": "^([1-9][0-9]{0,2}|1000)$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "UploadBandwidth": {
+        "MinLength": "",
+        "MaxLength": "",
+        "Required": false,
+        "Pattern": "^([1-9][0-9]{0,2}|1000)$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "DeltalinkID": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "DeltalinkBandwidthFlag": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "Y",
+            "N"
+        ]
+    },
+    "TransformerSerialNo": {
+        "MinLength": 0,
+        "MaxLength": 25,
+        "Required": true,
+        "Pattern": "^[a-zA-Z0-9]+$",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "Name": {
+        "MinLength": 1,
+        "MaxLength": 30,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "Metered": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            true,
+            false
+        ]
+    },
+    "UsagePerDay": {
+        "MinLength": 1,
+        "MaxLength": 9,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "0.001",
+        "MinValue": "65535.999",
+        "Values": []
+    },
+    "NoOfConnectedItems": {
+        "MinLength": 1,
+        "MaxLength": 5,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "UsageTime": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "allDay",
+            "custom"
+        ]
+    },
+    "StartHour": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23"
+        ]
+    },
+    "EndHour": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "string",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24"
+        ]
+    },
+    "TechitemID": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "",
+        "Type": "number",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "HyperHubID": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": true,
+        "Pattern": "^[0-9]+$",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "GroupCircuitID": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "GroupTransformerSerialNo": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "GroupMeterSerialNo": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "otp": {
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    },
+    "isVerfied":{
+        "MinLength": 0,
+        "MaxLength": 0,
+        "Required": false,
+        "Pattern": "",
+        "Type": "none",
+        "MaxValue": "",
+        "MinValue": "",
+        "Values": []
+    }
+}

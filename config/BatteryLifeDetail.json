@@ -1,0 +1,7 @@
+{
+    "Current_capacity": 600,
+    "Wifi_Active_Percentage": 75,
+    "LTE_active_percentage":20,
+    "Fixed Load": 50,
+    "MaxMinsOnBattery":54
+}

@@ -1,0 +1,17 @@
+{
+  "name": "collection-engine-web-services",
+  "version": "0.0.1",
+  "description": "CollectionEngineWebServices",
+  "dependencies": {
+    "express": "4.x",
+    "body-parser": "~1.0.0",
+    "morgan": "latest",
+    "mongodb": "~2.0",
+    "express-jwt": "0.2.1",
+    "jsonwebtoken": "0.4.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "main": "server.js"
+  }

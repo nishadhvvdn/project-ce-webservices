@@ -1,0 +1,55 @@
+var express = require("express");
+var router = express.Router();
+var dbCmd = require('../../data/dbCommandsReports.js');
+var schema = require('../../config/Helpers/reportsSchema');
+var schemaValidation = require('../../config/Helpers/payloadValidation');
+var dbCmdAuditLogs = require('../../data/dbCommandsSystemAuditLogReport');
+
+
+router.post('/', function (req, res) {
+    try {
+        var StartTime = req.query.StartTime;
+        var EndTime = req.query.EndTime;
+        const page = parseInt(req.query.Page);
+        const limit = parseInt(req.query.Limit);
+        let search = req.query.search;
+        let data = { StartTime, EndTime, page, limit }
+        let NewAccountReportSchema = schema.NewAccountReport;
+        schemaValidation.validateSchema(data, NewAccountReportSchema, function (err, result) {
+            if (err) {
+                res.json({
+                    "type": false,
+                    "Message": "Invalid Request, Please try again after some time !!",
+                    "PayloadErrors": err
+                });
+            } else {
+                data.search = search;
+                dbCmd.newAccount(StartTime, EndTime, data, function (err, details) {
+                    if (err) {
+                        res.json({
+                            "type": false,
+                            "Message": err,
+                        });
+                    } else {
+                        dbCmdAuditLogs.saveAuditLogs(req.sessionID, "Reports", function (err, resp) {
+                            res.json({
+                                "type": true,
+                                "Details": details,
+                            });
+                         });
+                    }
+                });
+            }
+        })
+    } catch (e) {
+        res.json({
+            "type": false,
+            "Message": "Something went wrong : " + e.name + " " + e.message
+        });
+    }
+
+
+
+});
+module.exports = router;
+
