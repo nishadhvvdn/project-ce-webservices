@@ -86,6 +86,7 @@
   },
   "main": "server.js",
   "scripts": {
+    "test": ""
   },
   "devDependencies": {
     "supertest": "^2.0.0"

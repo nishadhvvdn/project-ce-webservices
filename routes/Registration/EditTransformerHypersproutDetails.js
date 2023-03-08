@@ -5,9 +5,8 @@ var editHSWifi = require('./EditTransformerHypersproutWifiChangeRequest.js');
 const schemaValidation = require('../../config/Helpers/payloadValidation')
 const schema = require('../../config/Helpers/systemManagement')
 var _ = require('lodash');
+const sms = require('../../data/sendSms');
 const sendToIot = require('../../data/sendToiot');
-const sms = require('../../data/sendSmsAZ.js')
-
 
 
 router.post('/', function (req, res) {
@@ -171,14 +170,11 @@ router.post('/', function (req, res) {
                                         })
                                     }
                                     let toMobile = req.session.user.MobileNumber;
-                                    let otp = Math.floor(1000 + Math.random() * 9000);                                  
-                                    let messageData = {
-                                            from: process.env.AzSmsNumber,
-                                            to: toMobile,
-                                            message: "OTP Verification for Delta Account " + otp
-                                        }
-
-                                    sms.sendSms(messageData, function(err, success) {
+                                    let otp = Math.floor(1000 + Math.random() * 9000);
+                                    let from = process.env.AzSmsNumber;
+                                    let to = toMobile; // Need to know which number we have to use
+                                    let content = "OTP Verification for Delta Account " + otp;
+                                    sms.sendSms(from, to, content, function(err, success) {
                                         if(err) {
                                             console.log(err);
                                         }

@@ -9,8 +9,8 @@ var mongoDB = process.env.mongoDB;
 var socketTimeoutMS =  process.env.socketTimeoutMS;
 var maxPoolSize = process.env.maxPoolSize;
 
-var mongoUrl = "mongodb://" + "vvdn-dev-mongodb" + ":" + "AT4nMuVFtr7PDkGRxR9Yyn" + "@" + "40.83.161.123:27017" + "/" + "DELTA" + "?authSource=admin&connectTimeoutMS=300000";
-// var mongoUrl = "mongodb://" + mongoUser + ":" + mongoUserPass + "@" + mongoHost + "/" + mongoDB + "?authSource=admin&connectTimeoutMS=300000";
+// var mongoUrl = "mongodb://" + "vvdn-dev-mongodb" + ":" + "AT4nMuVFtr7PDkGRxR9Yyn" + "@" + "40.83.161.123:27017" + "/" + "DELTA" + "?authSource=admin&connectTimeoutMS=300000";
+var mongoUrl = "mongodb://" + mongoUser + ":" + mongoUserPass + "@" + mongoHost + "/" + mongoDB + "?authSource=DELTA&connectTimeoutMS=300000";
 
 // var mongoUrl = "mongodb://deltaLtts:Delta123@40.117.175.1:27017/DELTA?authSource=admin&connectTimeoutMS=300000";
 // var mongoUrl = "mongodb://webservicerw:webservice#987@collectionengine.eastus.cloudapp.azure.com/DELTA?authSource=DELTA&connectTimeoutMS=300000";

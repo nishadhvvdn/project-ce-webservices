@@ -62,7 +62,7 @@ var sess = {
     secret: '2C44-4D44-WppQ38S',
     cookie: { httpOnly: false },
     store: new MongoStore({
-        url: "mongodb://" + mongoUser + ":" + mongoUserPass + "@" + mongoHost + "/" + mongoDB + "?authSource=admin&connectTimeoutMS=300000",
+        url: "mongodb://" + mongoUser + ":" + mongoUserPass + "@" + mongoHost + "/" + mongoDB + "?authSource=DELTA&connectTimeoutMS=300000",
         ttl: 15 * 60
     }),
     saveUninitialized: true,
