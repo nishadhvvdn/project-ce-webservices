@@ -6,8 +6,8 @@ const schema = require('../../config/Helpers/messagingShema');
 
 router.get('/', function (req, res) {
     try {
-        let message_id = req.query.message_id;
-        let data = { message_id } ;
+        let _id = req.query._id;
+        let data = { _id } ;
         let getMessageById = schema.getMessageById;
 
         schemaValidation.validateSchema(data, getMessageById, function (err, result) {
@@ -19,7 +19,7 @@ router.get('/', function (req, res) {
                 });
             }
             else {
-                dbCmd.getMessageDetailsById(message_id, function (err, MessageDetailsById) {
+                dbCmd.getMessageDetailsById(_id, function (err, MessageDetailsById) {
                     if (err) {
                         res.json({
                             "type": false,

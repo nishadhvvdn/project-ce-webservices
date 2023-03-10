@@ -9,9 +9,9 @@ const schemaValidation = require('../../config/Helpers/payloadValidation');
 const schema = require('../../config/Helpers/messagingShema');
 
 router.delete('/', function (req, res) {
-    var message_id = req.body.message_id;
+    var _id = req.body._id;
 
-    dbCmd.deleteMessage(message_id, function (err, output) {
+    dbCmd.deleteMessage(_id, function (err, output) {
         if (err) {
             res.json({
                 "type": false,

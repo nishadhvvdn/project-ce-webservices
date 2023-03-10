@@ -16,6 +16,8 @@ var parser = require('../data/parser.js');
 var dao = require('../dao/MongoDAO.js');
 const paginatedResults = require('../config/Helpers/Pagination');
 const { and } = require('node-bitarray');
+const {  ObjectId } = require('mongodb');
+
 
 
 moment().format();
@@ -5371,7 +5373,7 @@ function decryptPassword(encryptedString, callback) {
 
 /**
 * @description -  Add New User, Administration -> Users -> Add New User Web Service
-* @param message_id  - message_id,
+* @param _id  - _id,
 * @param recipient - recevier name
 * @param message  - content 
 * @param is_read - true / false
@@ -5381,14 +5383,13 @@ function decryptPassword(encryptedString, callback) {
 * @param callback - callback function returns success or error response
 * @return callback function
 */
-function addMessage(message_id, recipient, message, is_read, date, sender, severity, callback) {
+function addMessage(_id, recipient, message, is_read, date, sender, severity, callback) {
     dbCon.getDb(function (err, db) {
         if (err)
             callback(err, null);
         else {
             var collectionName = db.delta_messages;
             var messageDoc = {
-                "message_id": message_id,
                 "recipient": recipient,
                 "message": message,
                 "is_read": is_read,
@@ -5396,7 +5397,8 @@ function addMessage(message_id, recipient, message, is_read, date, sender, sever
                 "sender": sender,
                 "severity": severity
             };
-            collectionName.find({ message_id: message_id }).toArray(function (err, res) {
+            _id=new ObjectId(_id);
+            collectionName.find({ _id: _id }).toArray(function (err, res) {
                 if (err)
                     callback(err, null);
                 else {
@@ -5414,7 +5416,7 @@ function addMessage(message_id, recipient, message, is_read, date, sender, sever
                         })
                     }
                 }
-            // addNewUser(collection, , message_id, recipient, message, is_read, date, sender, severity, callback);
+            // addNewUser(collection, , _id, recipient, message, is_read, date, sender, severity, callback);
            
             // var collection1 = db.delta_PasswordSettings;
             // var collection2 = db.delta_SecurityGroups;
@@ -5423,7 +5425,7 @@ function addMessage(message_id, recipient, message, is_read, date, sender, sever
             //     if (err)
             //         callback(new Error(err));
             //     else
-            //         addNewUser(collection, collection1, message_id, recipient, message, is_read, date, sender, severity, callback);
+            //         addNewUser(collection, collection1, _id, recipient, message, is_read, date, sender, severity, callback);
             // // });
             });
         }
@@ -5507,14 +5509,16 @@ function getMessageDetails(data, callback) {
 * @param callback - callback function returns success or error response
 * @return callback function
 */
-function editMessage( is_read, date,message_id, callback) {
+function editMessage( is_read, date,_id, callback) {
     dbCon.getDb(function (err, db) {
         var collection = db.delta_messages;
         if (err)
             callback(err, null);
         else {                
             // editUserDetails(collection, is_read, date, callback);
-            collection.find({ message_id: message_id }).toArray(function (err, result) {
+            _id=new ObjectId(_id);
+
+            collection.find({ _id: _id }).toArray(function (err, result) {
                 if (err)
                     callback(err, null);
                 else if (result.length === 0)
@@ -5524,7 +5528,7 @@ function editMessage( is_read, date,message_id, callback) {
                         "is_read": is_read,
                         "date": date,
                     }
-                    collection.update({ message_id: message_id }, { $set: messageDoc }, function (err, result) {
+                    collection.update({ _id: _id }, { $set: messageDoc }, function (err, result) {
                         if (err)
                             insertError.putErrorDetails(err, callback);
                         else
@@ -5538,18 +5542,19 @@ function editMessage( is_read, date,message_id, callback) {
 
 /**
 * @description -  delete user, Administration -> Users ->Delete User Web Service
-* @param message_id  - delete user
+* @param _id  - delete user
 * @param callback - callback function returns success or error response
 * @return callback function
 */
-function deleteMessage(message_id, callback) {
+function deleteMessage(_id, callback) {
     dbCon.getDb(function (err, db) {
         if (err)
             callback(err, null);
         else {
             var collection = db.delta_messages;
-            // userDelete(collection, message_id, callback);
-            collection.find({ message_id: message_id }).toArray(function (err, result) {
+            // userDelete(collection, _id, callback);
+            _id=new ObjectId(_id);
+            collection.find({ _id: _id }).toArray(function (err, result) {
             if (err) {
                 callback(err, null);
             }
@@ -5557,7 +5562,7 @@ function deleteMessage(message_id, callback) {
                 callback(new Error("Message not available"), null);
             }
             else {
-                collection.remove({ message_id: message_id }, function (err, res) {
+                collection.remove({ _id: _id }, function (err, res) {
                     if (err)
                         insertError.putErrorDetails(err, callback);
                     else if (res.result.ok === 0)
@@ -5571,15 +5576,16 @@ function deleteMessage(message_id, callback) {
     });
 }
 
-function getMessageDetailsById(message_id,  callback) {
+function getMessageDetailsById(_id,  callback) {
     try {
         dbCon.getDb(function (err, db) {
             let collection = db.delta_messages;
             if (err)
                 callback(err, null);
             else
-                // findOneFromMongoDB(db.delta_messages, message_id, callback);
-                collection.find({ message_id: message_id }).toArray(function (err, result) {
+                // findOneFromMongoDB(db.delta_messages, _id, callback);
+                _id=new ObjectId(_id);
+                collection.find({ _id: _id }).toArray(function (err, result) {
                     if (err) {
                         callback(err, null);
                     }

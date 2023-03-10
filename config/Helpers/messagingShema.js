@@ -2,13 +2,15 @@ const Joi = require('@hapi/joi');
 
 
 const addMessage = Joi.object().keys({
-    message_id: Joi.number().integer().required(),
+    // _id: Joi.number().integer().required(),
     recipient: Joi.string(),
     message: Joi.string(),
     is_read: Joi.boolean().default(false).invalid("false","False","True","true"),
     date: Joi.date(),
     sender: Joi.string(),
-    severity: Joi.string().valid("Minor", "Warning", "Critical").invalid('','null','undefined')
+    severity: Joi.string().valid("Minor", "Warning", "Critical").invalid('','null','undefined'),
+    type: Joi.string().valid('Transformer','Meter','Tenant')
+    
 });
 
 const editMessage = Joi.object().keys({
@@ -17,7 +19,7 @@ const editMessage = Joi.object().keys({
 });
 
 const getMessageById = Joi.object().keys({
-    message_id: Joi.number().required()
+    _id: Joi.number().required()
 })
 module.exports ={
     addMessage: addMessage,

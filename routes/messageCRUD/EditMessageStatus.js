@@ -8,7 +8,7 @@ const schema = require('../../config/Helpers/messagingShema');
 
 
 router.put('/', function (req, res) {
-    var message_id = req.query.message_id;
+    var _id = req.query._id;
     var is_read = req.body.is_read;
     var date = new Date()
     var editMessageData = { is_read , date};
@@ -23,7 +23,7 @@ router.put('/', function (req, res) {
             });
         }
         else {
-            dbCmd.editMessage(is_read , date, message_id,function (err, output) {
+            dbCmd.editMessage(is_read , date, _id,function (err, output) {
                 if (err) {
                     res.json({
                         "type": false,

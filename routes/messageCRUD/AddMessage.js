@@ -8,7 +8,7 @@ const schemaValidation = require('../../config/Helpers/payloadValidation')
 const schema = require('../../config/Helpers/messagingShema');
 
 router.post('/', function (req, res) {
-    var message_id = req.body.message_id;
+    var _id = req.body._id;
     // var ProfilePic = req.body.ProfilePic;
     var recipient = req.body.recipient;
     var message = req.body.message;
@@ -17,7 +17,7 @@ router.post('/', function (req, res) {
     var sender = req.session.user._id; //    console.log("user", req.session.user._id)
     var severity = req.body.severity;
 
-    var addMessageData = { message_id,recipient,message,is_read,date,sender,severity};
+    var addMessageData = {recipient,message,is_read,date,sender,severity};
     var addMessageDataSchema = schema.addMessage;
 
     schemaValidation.validateSchema(addMessageData, addMessageDataSchema, function (err, result) {
@@ -29,14 +29,14 @@ router.post('/', function (req, res) {
             });
         }
         else {
-            dbCmd.addMessage(message_id,recipient,message,is_read,date,sender,severity, function (err, output) {
+            dbCmd.addMessage(_id,recipient,message,is_read,date,sender,severity, function (err, output) {
                 if (err) {
                     res.json({
                         "type": false,
                         "Message": err.message
                     });
                 } else {
-                    // dbCmdAuditLogs.saveAuditLogs(req.sessionID, "Added New Message - " + message_id, function (err, resp) {
+                    // dbCmdAuditLogs.saveAuditLogs(req.sessionID, "Added New Message - " + _id, function (err, resp) {
                         res.json({
                             "type": true,
                             "output": output

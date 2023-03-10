@@ -56,13 +56,14 @@ var mongoUser = process.env.mongoUser;
 var mongoUserPass = process.env.mongoUserPass;
 var mongoHost = process.env.mongoHost;
 var mongoDB = process.env.mongoDB;
-
+var connectTimeoutMS = process.env.connectTimeoutMS
+var authSource = process.env.authSource
 
 var sess = {
     secret: '2C44-4D44-WppQ38S',
     cookie: { httpOnly: false },
     store: new MongoStore({
-        url: "mongodb://" + mongoUser + ":" + mongoUserPass + "@" + mongoHost + "/" + mongoDB + "?authSource=DELTA&connectTimeoutMS=300000",
+        url: "mongodb://" + mongoUser + ":" + mongoUserPass + "@" + mongoHost + "/" + mongoDB + "?authSource="+authSource+"&connectTimeoutMS="+connectTimeoutMS,
         ttl: 15 * 60
     }),
     saveUninitialized: true,

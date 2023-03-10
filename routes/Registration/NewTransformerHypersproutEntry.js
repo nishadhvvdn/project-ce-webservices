@@ -194,6 +194,7 @@ router.post('/', function (req, res) {
                             unique(Errors);
                             if(flowType == 1 && resultErrors[0].Status == 'Pass') {
                                 resultErrors[0].Otpmessage = 'OTP generated successfully';
+                                result=result.concat(" ",'Two-factor authentication is required to complete the transformer end-to-end process.')
                             }
                             if(flowType == 2 && result == 'Transformer Details Successfully Added!') {
                                 Errors = [];
