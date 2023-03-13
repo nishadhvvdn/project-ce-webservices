@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'pilotdev-datavinewebservice'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_792083A7548A4906BC6301E52B28AB90 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_81B198109914405C9B79F07E339D6C27 }}
           package: .
