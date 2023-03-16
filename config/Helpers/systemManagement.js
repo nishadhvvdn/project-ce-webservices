@@ -247,7 +247,7 @@ const insertNewTransformerHypersproutDetails = Joi.object().keys({
             multiplier: Joi.number().required()
         }),
     ),
-    otp: Joi.number().allow('',null)
+    otp: Joi.string().allow('',null)
 }).required();
 
 const updateTransformerHypersproutValues = Joi.object().keys({

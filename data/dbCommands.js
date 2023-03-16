@@ -5615,7 +5615,30 @@ function getMessagesCount( callback){
             callback(null, dbUnreadMessageCount);
             }
         })
-    }
+};
+
+/**
+* @description -  edit message status
+* @param updatemessageReadStatusData  - is_read :true & current date,
+* @param callback - callback function returns success or error response
+* @return callback function
+*/
+function updateMessageAsRead( updatemessageReadStatusData, callback) {
+    dbCon.getDb(function (err, db) {
+        var collection = db.delta_messages;
+        if (err)
+            callback(err, null);
+        else {                
+                var messageDoc = updatemessageReadStatusData;
+                collection.updateMany({ is_read: false }, { $set: messageDoc }, function (err, result) {
+                if (err)
+                    insertError.putErrorDetails(err, callback);
+                else
+                    callback(null, "Message status updated");
+                });
+            }
+    });
+}
 
 /* DB Commands SECTION 3 - MODULE EXPORTS*/
 module.exports = {
@@ -5685,5 +5708,6 @@ module.exports = {
     editMessage:editMessage,
     deleteMessage:deleteMessage,
     getMessageDetailsById:getMessageDetailsById,
-    getMessagesCount:getMessagesCount
+    getMessagesCount:getMessagesCount,
+    updateMessageAsRead:updateMessageAsRead
 };

@@ -385,6 +385,7 @@ var EditMessageStatus = require('./routes/messageCRUD/EditMessageStatus.js');
 var DeleteMessage = require('./routes/messageCRUD/DeleteMessage.js');
 var GetMessageById = require('./routes/messageCRUD/GetMessageDetailsById.js');
 var GetMessageCount = require('./routes/messageCRUD/GetMessagesCount.js');
+var MessagestoRead = require("./routes/messageCRUD/UpdateMessageToRead.js")
 //Reports
 var DeviceFirmwareVersionReport = require('./routes/Reports/DeviceFirmwareVersionReport.js');
 var CommunicationsStatisticsReport = require('./routes/Reports/CommunicationsStatisticsReport.js');
@@ -764,6 +765,7 @@ app.use('/EditMessageStatus', EditMessageStatus);
 app.use('/DeleteMessage',DeleteMessage);
 app.use('/GetMessageById',GetMessageById);
 app.use('/GetMessageCount',GetMessageCount);
+app.use('/MessagestoRead',MessagestoRead);
 //Reports
 app.use('/DeviceFirmwareVersionReport',permissioncheckMiddleware, DeviceFirmwareVersionReport);
 app.use('/CommunicationsStatisticsReport',permissioncheckMiddleware, CommunicationsStatisticsReport);

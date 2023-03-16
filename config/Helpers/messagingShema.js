@@ -20,9 +20,15 @@ const editMessage = Joi.object().keys({
 
 const getMessageById = Joi.object().keys({
     _id: Joi.number().required()
-})
+});
+
+const updatemessageReadStatus = Joi.object().keys({
+    is_read: Joi.boolean(),
+    date: Joi.date(),
+});
 module.exports ={
     addMessage: addMessage,
     editMessage: editMessage,
-    getMessageById:getMessageById
+    getMessageById:getMessageById,
+    updatemessageReadStatus:updatemessageReadStatus
 }

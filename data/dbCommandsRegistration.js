@@ -39,8 +39,8 @@ function pushBootstrapData(HypersproutSerialNumber, sak, callback) {
     const publisher  = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST,
         { auth_pass: process.env.REDIS_PASS, tls: { servername: process.env.REDIS_HOST } });
     let deviceId = `HS-${HypersproutSerialNumber}`;
-    let bootstrapdata = {"HypersproutSerialNumber":deviceId,"ConnectionString":`HostName=${process.env.IOT_HOSTNAME};DeviceId=${deviceId};SharedAccessKey=${sak}`}
-    publisher.send_command('rpush',[bootstrapdata.HypersproutSerialNumber,JSON.stringify(bootstrapdata)], function(err,res) {
+    let bootstrapdata = {"HypersproutSerialNumber":HypersproutSerialNumber,"HostName":process.env.IOT_HOSTNAME,"SAK":sak}
+    publisher.send_command('rpush',[deviceId,JSON.stringify(bootstrapdata)], function(err,res) {
         if(err) {
             callback(err,null);
         } else {
@@ -1943,10 +1943,11 @@ function createNewTransformerHypersproutEntryFromMongoDB(collectionName, collect
                                                     // insertTransformerHypersprout(THID, dupTID, dupHSID, errorFinal, CName, CName1, CName2, jobsCollection, configCollection, resultErrors, callback);  
 
                                                     //check if hypersprout is registered, if not register hypersprout on IOT
+                        
                                                     if(flowType == 0) {
                                                         checkIfDeviceRegistered(THID, errorFinal, function (errorFinal, arrToInsert) {
                                                             // 1) Insert command for all new details with no duplicates
-    
+                                                              
                                                             if (arrToInsert.length > 0) {
                                                                 insertTransformerHypersprout(arrToInsert, dupTID, dupHSID, errorFinal, CName, CName1, CName2, jobsCollection, configCollection, resultErrors, toMob,flowType, callback);
                                                             }
@@ -2155,7 +2156,6 @@ function createNewTransformerHypersproutEntryFromMongoDB(collectionName, collect
                                                         }
                                                     }
                                                 }
-
                                                 if ((THID.length > 0) && (dupTID.length > 0) && (dupHSID.length === 0)) {
                                                     //check if hypersprout is registered, if not register hypersprout on IOT
                                                     checkIfDeviceRegistered(THID, errorFinal, function (errorFinal, arrToInsert) {
@@ -2208,7 +2208,7 @@ function createNewTransformerHypersproutEntryFromMongoDB(collectionName, collect
                                                             errorFinal.push(insertNewTransformerHypersproutDetails.HSWiFiMacID[q] + " Mac ID already in use!!");
                                                             resultErrors.push({ SerialNumber: insertNewTransformerHypersproutDetails.TFMRSerialNumber[q], Status: "Fail", Comment: insertNewTransformerHypersproutDetails.HSWiFiMacID[q] + " Mac ID already in use!!" });
                                                         } else {
-                                                            if (dupTID.indexOf(insertNewTransformerHypersproutDetails.TFMRSerialNumber[q].toLowerCase()) === -1 || flowType == 2) {
+                                                            if (dupTID.indexOf(insertNewTransformerHypersproutDetails.TFMRSerialNumber[q].toLowerCase()) === -1 || flowType == 2 ) {
                                                                 /* 
                                                                 Multiple If-Else statements to Validate Data and
                                                                 return a customised message on validation failure
@@ -2274,9 +2274,8 @@ function createNewTransformerHypersproutEntryFromMongoDB(collectionName, collect
                                                             // 3) Insert command for all new details with dup TFMR
                                                             insertTransformerHypersprout(arrToInsert, dupTID, dupHSID, errorFinal, CName, CName1, CName2, jobsCollection, configCollection, resultErrors, callback);
                                                         });
-                                                    } else if ((THID.length > 0) && (dupTID.length > 0) && (dupHSID.length > 0)) {
-                                                        if(flowType == 2) {
-                                                           
+                                                    } else if ((THID.length > 0) && (dupTID.length > 0) && (dupHSID.length > 0)) {                                                        
+                                                        if(flowType == 2 ) {
                                                             if(dupHypersproutID[0].otp != otp) {
                                                                 callback(null, "Failed: OTP does not match!", errorFinal, resultErrors);
                                                             } else {
@@ -2343,6 +2342,9 @@ function insertTransformerHypersprout(THID, dupTID, dupHSID, errorFinal, collect
         let startInd;
         let bulkInsertArr1;
         let loopcount = 0;
+        let otpCount=true;
+        let bulkOtp;
+        let i=0;
         if (THID.length > 500) {
             callback("Total number of records should not be more than 500", null);
         } else {
@@ -2535,16 +2537,15 @@ function insertTransformerHypersprout(THID, dupTID, dupHSID, errorFinal, collect
                                     thid.Country = "INDIA";
                                     var configdoc = CreateConfigHS(thid, nextId);
                                     var SakDeviceID = "HS-" + thid.HypersproutSerialNumber;
-
-                                    if(flowType == 1) {
-                                        console.log("inside flowType == 1",toMob)
+                                    if(flowType == 1 || flowType == 0) {
+                                        if(otpCount){
+                                        otpCount=false;
                                         /* OTP generation and SMS for OTP */
-                                        HypersproutToInsert[0].isVerfied = false;
-                                        HypersproutToInsert[0].otp = Math.floor(1000 + Math.random() * 9000);
+                                        bulkOtp= Math.floor(1000 + Math.random() * 9000);
                                         let messageData = {
                                             from: process.env.AzSmsNumber,
                                             to: toMob,
-                                            message: "OTP Verification for Delta Account " + HypersproutToInsert[0].otp
+                                            message: "OTP Verification for Delta Account " + bulkOtp
                                         }
                                         sms.sendSms(messageData, function(err, success) {
                                             if(err) {
@@ -2553,7 +2554,11 @@ function insertTransformerHypersprout(THID, dupTID, dupHSID, errorFinal, collect
                                                 console.log(success);
                                             }
                                         });
-                                       
+
+                                    }
+                                        HypersproutToInsert[i].otp=bulkOtp
+                                        HypersproutToInsert[i].isVerfied = false;
+                                        i++;
                                         ConfigToInsert.push(configdoc);
                                         collectionName1.insert({
                                             "TransformerID": nextId, "CircuitID": groupCircuitID, "TransformerSerialNumber": thid.TFMRSerialNumber, "TFMRName": thid.TFMRName, "Make": thid.TFMRMake, "RatingCapacity": thid.TFMRRatingCapacity, "HighLineVoltage": thid.TFMRHighLineVoltage, "LowLineVoltage": thid.TFMRLowLineVoltage, "HighLineCurrent": thid.TFMRHighLineCurrent, "LowLineCurrent": thid.TFMRLowLineCurrent, "Type": thid.TFMRType, "WireSize": thid.WireSize, "MaxOilTemp": thid.MaxOilTemp, "MinOilTemp": thid.MinOilTemp, "Status": '', "NoOfMeterAllocated": 0, "NoOfHyperHubAllocated": 0, "CameraConnect": thid.CameraConnect, "CreatedOn": new Date()
@@ -2572,7 +2577,7 @@ function insertTransformerHypersprout(THID, dupTID, dupHSID, errorFinal, collect
                                                 callbackEach()
                                             }
                                         });
-                                    } else if(flowType == 2) {
+                                    } else if(flowType == 2 ) {
                                         sendToIot.checkDeviceConnectionSAS(SakDeviceID, function (err, status) {
                                             if(err) {
                                                 callbackEach(err)
@@ -2588,34 +2593,7 @@ function insertTransformerHypersprout(THID, dupTID, dupHSID, errorFinal, collect
                                                 })
                                             }
                                         });
-                                    } else if(flowType == 0) {
-                                        sendToIot.checkDeviceConnectionSAS(SakDeviceID, function (err, status) {
-                                            if (err) {
-                                                callbackEach(err)
-                                            } else {
-                                                Sak = status;
-                                                configdoc.Cloud_Connectivity_Settings.SAK = Sak;
-                                                ConfigToInsert.push(configdoc);
-                                                collectionName1.insert({
-                                                    "TransformerID": nextId, "CircuitID": groupCircuitID, "TransformerSerialNumber": thid.TFMRSerialNumber, "TFMRName": thid.TFMRName, "Make": thid.TFMRMake, "RatingCapacity": thid.TFMRRatingCapacity, "HighLineVoltage": thid.TFMRHighLineVoltage, "LowLineVoltage": thid.TFMRLowLineVoltage, "HighLineCurrent": thid.TFMRHighLineCurrent, "LowLineCurrent": thid.TFMRLowLineCurrent, "Type": thid.TFMRType, "WireSize": thid.WireSize, "MaxOilTemp": thid.MaxOilTemp, "MinOilTemp": thid.MinOilTemp, "Status": '', "NoOfMeterAllocated": 0, "NoOfHyperHubAllocated": 0, "CameraConnect": thid.CameraConnect, "CreatedOn": new Date()
-                                                }, function (err, result) {
-                                                    if (err) {
-                                                        insertError.putErrorDetails(err, callbackEach);
-                                                        callbackEach(err)
-                                                    }
-                                                    else {
-                                                        if (groupCircuitID == null && thid.GroupCircuitID != "" && thid.GroupCircuitID) {
-                                                            resultErrors.push({ SerialNumber: thid.HypersproutSerialNumber, Status: "Pass", Comment: "Transformer Details Successfully Added But Transformer Not Grouped Due To Invalid CircuitID: " + thid.GroupCircuitID });
-                                                        }
-                                                        else {
-                                                            resultErrors.push({ SerialNumber: thid.HypersproutSerialNumber, Status: "Pass", Comment: "Transformer Details Successfully Added!" });
-                                                        }
-                                                        callbackEach()
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    }
+                                    } 
                                 })
                             });
                         } else {
@@ -2628,6 +2606,7 @@ function insertTransformerHypersprout(THID, dupTID, dupHSID, errorFinal, collect
                         if (err) {
                             callback(err, null);
                         } else {
+                            
                             if (HypersproutToInsert.length > 0) {
                                 if(flowType == 1 || flowType == 0) {
                                     async.each(validUniqueCircuitID,
@@ -2650,17 +2629,23 @@ function insertTransformerHypersprout(THID, dupTID, dupHSID, errorFinal, collect
                                             }
                                         })
                                 } else if (flowType == 2) {
-                                    collectionName.findOneAndUpdate({HypersproutSerialNumber: HypersproutToInsert[0].HypersproutSerialNumber},{$set:{isVerfied : true}},function(err, res) {
-                                        if(err) {
-                                            insertError.putErrorDetails(err, callbackEach);
-                                        }
-                                        configCollection.findOneAndUpdate({'HypersproutSerialNumber': HypersproutToInsert[0].HypersproutSerialNumber},{$set:{'Cloud_Connectivity_Settings.SAK': ConfigToInsert[0].Cloud_Connectivity_Settings.SAK}}, function(err, res) {
+                                    for (let j = 0; j < HypersproutToInsert.length; j++) {
+                                        collectionName.findOneAndUpdate({HypersproutSerialNumber: HypersproutToInsert[j].HypersproutSerialNumber},{$set:{isVerfied : true}},function(err, res) {
                                             if(err) {
-                                                callback(err, 'config upload failed', errorFinal, resultErrors);
+                                                insertError.putErrorDetails(err, callbackEach);
                                             }
-                                            callback(null, "Transformer Details Successfully Added!", errorFinal, resultErrors);
+                                            configCollection.findOneAndUpdate({'HypersproutSerialNumber': HypersproutToInsert[j].HypersproutSerialNumber},{$set:{'Cloud_Connectivity_Settings.SAK': ConfigToInsert[0].Cloud_Connectivity_Settings.SAK}}, function(err, res) {
+                                                if(err) {
+                                                    callback(err, 'config upload failed', errorFinal, resultErrors);
+                                                }
+                                                if (j == HypersproutToInsert.length-1) {
+                                                callback(null, "Transformer Details Successfully Added!", errorFinal, resultErrors);
+                                                   
+                                                }
+                                            })
                                         })
-                                    })
+                                        
+                                    }
                                 }
                             }
                             else {

@@ -71,8 +71,16 @@ router.post('/', function (req, res) {
                 if((insertNewTransformerHypersproutDetails.otp == '' || insertNewTransformerHypersproutDetails.otp == null) && insertNewTransformerHypersproutDetails.Type == 'Add')
                 {
                     flowType = 1;
-                } else if(insertNewTransformerHypersproutDetails.otp && insertNewTransformerHypersproutDetails.Type == 'Add') {
+                } else if((insertNewTransformerHypersproutDetails.otp == '' || insertNewTransformerHypersproutDetails.otp == null) && insertNewTransformerHypersproutDetails.Type == 'Upload')
+                {
+                    flowType = 0;
+                }
+                else if(insertNewTransformerHypersproutDetails.otp && insertNewTransformerHypersproutDetails.Type == 'Add' ) {
                     flowType = 2;
+                }
+
+                else if(insertNewTransformerHypersproutDetails.otp && insertNewTransformerHypersproutDetails.Type == 'Upload'){
+                     flowType=2
                 }
                 
                 for (i = 0; i < (insertNewTransformerHypersproutDetails.HSGPRSMacID).length; i++) {
